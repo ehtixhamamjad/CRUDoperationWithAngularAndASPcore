@@ -1,0 +1,63 @@
+<div class="container">
+  <br />
+  <form [formGroup]="emplyforms" (ngSubmit)="onsublit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="email"
+        class="form-control"
+        id="nameid"
+        aria-describedby="emailHelp"
+        formControlName="name"
+        placeholder="Enter Your Name"
+      />
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="emailid"
+        aria-describedby="emailHelp"
+        formControlName="email"
+        placeholder="Enter Your Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="pass">Password</label>
+      <input
+        type="text"
+        class="form-control"
+        id="passwordid"
+        formControlName="password"
+        placeholder="Enter Your Password"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ btnChange }}</button>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+      <tr *ngFor="let emp of emplyList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.password }}</td>
+        <td>
+          <button class="btn btn-success" (click)="edit(emp.id)">Edit</button>
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="DeleteFunction(emp.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </thead>
+  </table>
+</div>
